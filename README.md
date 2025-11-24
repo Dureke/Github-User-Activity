@@ -1,5 +1,7 @@
 # Github User Activity
 
+Inspired by [roadmap.sh project ideas](https://roadmap.sh/projects/github-user-activity).
+
 **Week:** 2  
 **Language:** Python  
 **Topic:** Command line interface (CLI) to fetch the recent activity of a GitHub user and display it in the terminal  
