@@ -1,14 +1,16 @@
-# Project Title
+# Github User Activity
 
-**Week:** {{WEEK_NUMBER}}  
-**Language:** {{LANGUAGE}}  
-**Topic:** {{TOPIC}}  
-**Date:** {{DATE}}
+**Week:** 2
+**Language:** Python
+**Topic:** Command line interface (CLI) to fetch the recent activity of a GitHub user and display it in the terminal
+**Date:** 11/24/25
 
 ---
 
 ## Overview
-Briefly describe the goal of this project and what you aimed to learn.
+- Solidify Python foundations
+- Learn common Python project structures
+- Learn how to fetch API calls and parse the results
 
 ## How to Run
 
