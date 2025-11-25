@@ -16,6 +16,18 @@ Inspired by [roadmap.sh project ideas](https://roadmap.sh/projects/github-user-a
 
 ## How to Run
 
+
+### Setup
+
+1. Install dependencies: `pip install -r requirements.txt`
+2. Copy `.env.example` to `.env` and configure your settings
+3. Run the application: `python src/main.py`
+
+### Testing
+
+Run tests with: `python -m unittest discover tests`
+
+
 ---
 
 ## Previous Projects
