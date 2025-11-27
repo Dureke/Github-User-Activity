@@ -10,20 +10,21 @@ class APIClient:
     """Handles API requests and responses."""
 
     def __init__(self):
+        load_dotenv()
+
+        self.base_url = os.getenv("API_BASE_URL")
+        self.api_key = os.getenv("API_KEY")
         pass
 
     def get(self, endpoint: str, params: dict = None):
-        load_dotenv()
-
-        base_url = os.getenv("API_BASE_URL")
-        api_key = os.getenv("API_KEY")
-
-        response = requests.get(f"{base_url}/user", params=params, headers={"Authorization": f"token {api_key}"})
+        """Send GET request to API endpoint."""
+        response = requests.get(f"{self.base_url}/{endpoint}", params=params, headers={"Authorization": f"token {self.api_key}"})
         return response
 
     def post(self, endpoint: str, data: dict = None):
         """Send POST request to API endpoint."""
-        pass
+        response = requests.post(f"{self.base_url}/{endpoint}", json=data, headers={"Authorization": f"token {self.api_key}"})
+        return response
 
     def _handle_response(self, response):
         """Process API response."""
