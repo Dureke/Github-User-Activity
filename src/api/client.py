@@ -1,6 +1,11 @@
 """API client for handling HTTP requests."""
 
 
+import os
+from dotenv import load_dotenv
+import requests
+
+
 class APIClient:
     """Handles API requests and responses."""
 
@@ -8,8 +13,13 @@ class APIClient:
         pass
 
     def get(self, endpoint: str, params: dict = None):
-        """Send GET request to API endpoint."""
-        pass
+        load_dotenv()
+
+        base_url = os.getenv("API_BASE_URL")
+        api_key = os.getenv("API_KEY")
+
+        response = requests.get(f"{base_url}/user", params=params, headers={"Authorization": f"token {api_key}"})
+        return response
 
     def post(self, endpoint: str, data: dict = None):
         """Send POST request to API endpoint."""

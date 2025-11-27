@@ -1,5 +1,7 @@
 """Main application entry point."""
 
+import api.client
+
 
 class Application:
     """Main application class."""
@@ -21,6 +23,8 @@ class Application:
 
 
 def main():
+    response = api.client.APIClient().get("user")
+    print(response.json())
     """Application entry point."""
     pass
 
