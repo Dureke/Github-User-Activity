@@ -11,32 +11,42 @@ class APIClient:
 
     def __init__(self):
         load_dotenv()
-
         self.base_url = os.getenv("API_BASE_URL")
         self.api_key = os.getenv("API_KEY")
-        pass
 
     def get(self, endpoint: str, params: dict = None):
         """Send GET request to API endpoint."""
         try:
-            response = requests.get(f"{self.base_url}/{endpoint}", params=params, headers={"Authorization": f"token {self.api_key}"})
-            return response
+            response = requests.get(
+                f"{self.base_url}/{endpoint}", 
+                params=params, 
+                headers={"Authorization": f"token {self.api_key}"}
+            )
+            return self._handle_response(response)
         except requests.RequestException as e:
             self._handle_error(e)
 
     def post(self, endpoint: str, data: dict = None):
         """Send POST request to API endpoint."""
         try:
-            response = requests.post(f"{self.base_url}/{endpoint}", json=data, headers={"Authorization": f"token {self.api_key}"})
-            return response
+            response = requests.post(
+                f"{self.base_url}/{endpoint}", 
+                json=data, 
+                headers={"Authorization": f"token {self.api_key}"}
+            )
+            return self._handle_response(response)
         except requests.RequestException as e:
             self._handle_error(e)
 
     def _handle_response(self, response):
         """Process API response."""
-        pass
+        if not response.ok:
+            self._handle_error(f"API request error: {response.status_code} - {response.text}")
+        try:
+            return response.json()
+        except ValueError:
+            return response.text
 
     def _handle_error(self, error):
         """Handle API errors."""
         print(f"API request error: {error}")
-        pass

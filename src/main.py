@@ -26,7 +26,7 @@ class Application:
 def main():
     app = Application()
     response = app.client.get("user")
-    print(response.json())
+    print(response)
     """Application entry point."""
     pass
 
