@@ -18,13 +18,19 @@ class APIClient:
 
     def get(self, endpoint: str, params: dict = None):
         """Send GET request to API endpoint."""
-        response = requests.get(f"{self.base_url}/{endpoint}", params=params, headers={"Authorization": f"token {self.api_key}"})
-        return response
+        try:
+            response = requests.get(f"{self.base_url}/{endpoint}", params=params, headers={"Authorization": f"token {self.api_key}"})
+            return response
+        except requests.RequestException as e:
+            self._handle_error(e)
 
     def post(self, endpoint: str, data: dict = None):
         """Send POST request to API endpoint."""
-        response = requests.post(f"{self.base_url}/{endpoint}", json=data, headers={"Authorization": f"token {self.api_key}"})
-        return response
+        try:
+            response = requests.post(f"{self.base_url}/{endpoint}", json=data, headers={"Authorization": f"token {self.api_key}"})
+            return response
+        except requests.RequestException as e:
+            self._handle_error(e)
 
     def _handle_response(self, response):
         """Process API response."""
@@ -32,4 +38,5 @@ class APIClient:
 
     def _handle_error(self, error):
         """Handle API errors."""
+        print(f"API request error: {error}")
         pass

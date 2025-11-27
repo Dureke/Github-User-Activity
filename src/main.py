@@ -1,13 +1,14 @@
 """Main application entry point."""
 
-import api.client
+import api.client as APIClient
 
 
 class Application:
     """Main application class."""
 
     def __init__(self):
-        pass
+        self.client = APIClient.APIClient()
+        self.setup()
 
     def run(self):
         """Run the application."""
@@ -23,7 +24,8 @@ class Application:
 
 
 def main():
-    response = api.client.APIClient().get("user")
+    app = Application()
+    response = app.client.get("user")
     print(response.json())
     """Application entry point."""
     pass
